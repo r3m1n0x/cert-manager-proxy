@@ -18,4 +18,4 @@ FROM base
 # copy go binary from builder stage
 COPY --from=builder /go/bin/proxy /usr/local/bin/proxy
 # run go binary
-CMD ["proxy"]
+ENTRYPOINT ["/usr/local/bin/proxy"]

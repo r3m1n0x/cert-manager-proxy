@@ -14,12 +14,12 @@ spec:
     spec:
       containers:
         - name: reverse-proxy
-          image: <image-name>:<image-tag> # Replace with your reverse proxy image details
+          image: ghcr.io/r3m1n0x/cert-manager-proxy:main # Replace with your reverse proxy image details
           args:
-            - "--backend=http://backend-service:8080"
-            - "--frontend=:80"
+            - "--backend=http://ingress-nginx-controller:80" # Replace with your backend service details
+            - "--frontend=:8080"
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           resources:
             limits:
               cpu: 200m

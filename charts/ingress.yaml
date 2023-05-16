@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - example.com  # Replace with your desired host
-      secretName: example-tls-secret  # Replace with the name of the TLS secret
+        - test.bckmn.dev  # Replace with your desired host
+      secretName: test.bkcmn.dev  # Replace with the name of the TLS secret
   rules:
-    - host: example.com  # Replace with your desired host
+    - host: test.bckmn.dev  # Replace with your desired host
       http:
         paths:
           - path: /
@@ -22,4 +22,4 @@ spec:
               service:
                 name: reverse-proxy-service  # Name of the reverse proxy Service
                 port:
-                  number: 80  # Port of the reverse proxy
+                  number: 80  # Port of the reverse proxy service
