@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cert-manager-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: <cluster-issuer-name>  # Specify the cluster issuer for SSL/TLS termination
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/proxy-protocol: "true"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "600s"
+spec:
+  tls:
+    - hosts:
+        - example.com  # Replace with your desired host
+      secretName: example-tls-secret  # Replace with the name of the TLS secret
+  rules:
+    - host: example.com  # Replace with your desired host
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: reverse-proxy-service  # Name of the reverse proxy Service
+                port:
+                  number: 80  # Port of the reverse proxy
